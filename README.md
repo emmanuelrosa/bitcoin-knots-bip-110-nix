@@ -27,9 +27,9 @@ Yes, of course you should audit the audit script, but it's simple and short. See
 
 Other things to consider:
 
-# Is the Nixpkgs input the real Nixpkgs?
-# Is the input for the BIP-110 client the correct one?
-# Are the checksums and signatures coming from the correct place?
+- Is the Nixpkgs input the real Nixpkgs?
+- Is the input for the BIP-110 client the correct one?
+- Are the checksums and signatures coming from the correct place?
 
 Once you're ready to use this package, add this flake to your NixOS flake-based configuration, and override your bitcoin-knots package:
 
