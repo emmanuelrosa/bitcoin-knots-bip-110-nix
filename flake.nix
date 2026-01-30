@@ -21,11 +21,6 @@
     packages = forAllSystems (pkgs: system: {
       default = self.packages."${system}".bitcoin-knots-bip-110;
 
-      bitcoin-knots-bip-110 = pkgs.callPackage ./pkgs/bitcoin-knots-bip-110 {
-        withGui = true;
-        inherit (pkgs.darwin) autoSignDarwinBinariesHook;
-      };
-
       bitcoind-knots-bip-110 = pkgs.callPackage ./pkgs/bitcoin-knots-bip-110 {
         withGui = false;
         inherit (pkgs.darwin) autoSignDarwinBinariesHook;

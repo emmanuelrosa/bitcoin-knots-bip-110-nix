@@ -9,7 +9,7 @@ This is a [NixOS](https://nixos.org/) flake which provides GUI and non-GUI packa
 
 This flake contains three Nix packages:
 
-- bitcoin-knots-bip-110 - This package provides a GUI
+- ~bitcoin-knots-bip-110 - This package provides a GUI~ Removed because it doesn't build.
 - bitcoind-knots-bip-110 - This package does NOT provide a GUI. 
 - audit - A BASH script to compare the difference between this package and the original bitcoin-knots Nix package. See below.
 
