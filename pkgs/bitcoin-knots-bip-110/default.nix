@@ -40,12 +40,12 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = if withGui then "bitcoin-knots-bip-110" else "bitcoind-knots-bip-110";
-  version = "29.2.knots20251110+bip110-v0.1rc3"; 
+  version = "29.2.knots20251110+bip110-v0.1"; 
 
   src = fetchurl {
     url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/bitcoin-${finalAttrs.version}.tar.gz";
     # hash retrieved from signed SHA256SUMS
-    hash = "sha256-s7Y/DmfkEGbfdc1vUgRBeh6nZa3ZUVAtQevweoTLf3E=";
+    hash = "sha256-o5aG8xna6j5R5HaFQsxnBquy8YRw2iw1Hwc6LMaLuo8=";
   };
 
   nativeBuildInputs = [
@@ -96,12 +96,12 @@ stdenv.mkDerivation (finalAttrs: {
 
       checksums = fetchurl {
         url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/SHA256SUMS";
-        hash = "sha256-IquyIXfctM4N8CZA7gSnJ6FgzxIfnFR2lZco9QlrkQs=";
+        hash = "sha256-ir/SAVVdWLhiXX54i7JR8O+8/Ybim2VjeEdkdHSMZPk=";
       };
 
       signatures = fetchurl {
         url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/SHA256SUMS.asc";
-        hash = "sha256-LX8Nq8HfXqNKx0W0Aso4L57vOukqcZIbSXsAuPB1HMo=";
+        hash = "sha256-XaxDDcOdMLPEbZKzb1Fs8KDqOzy/tRMdaH1oecSgrNc=";
       };
 
       verifyBuilderKeys =
