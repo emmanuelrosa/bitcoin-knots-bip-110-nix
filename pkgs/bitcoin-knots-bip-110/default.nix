@@ -32,7 +32,7 @@
   # The list can be found at https://github.com/bitcoinknots/guix.sigs/tree/knots/builder-keys
   builderKeys ? [
     "1A3E761F19D2CC7785C5502EA291A2C45D0C504A" # luke-jr.gpg
-    "DAED928C727D3E613EC46635F5073C4F4882FFFC" # leo-haf.gpg
+    "32FE1E61B1C711186CA378DEFD8981F1BC41ABB9" # oomahq
     "95636F3538D9262765AB29BEE952E584CA8C0F45" # bitcoinmechanic
     "2B97F03293744D70F6BBA82F2E3A66FF67F98B4F" # dathonohm
   ],
@@ -40,12 +40,12 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = if withGui then "bitcoin-knots-bip-110" else "bitcoind-knots-bip-110";
-  version = "29.2.knots20251110+bip110-v0.1"; 
+  version = "29.3.knots20260210+bip110-v0.2"; 
 
   src = fetchurl {
     url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/bitcoin-${finalAttrs.version}.tar.gz";
     # hash retrieved from signed SHA256SUMS
-    hash = "sha256-o5aG8xna6j5R5HaFQsxnBquy8YRw2iw1Hwc6LMaLuo8=";
+    hash = "sha256-n5c6YqfNkLgTHyhNNRWbgDkkSY//seKLuWGFW3TcMBo=";
   };
 
   nativeBuildInputs = [
@@ -90,18 +90,18 @@ stdenv.mkDerivation (finalAttrs: {
       publicKeys = fetchFromGitHub {
         owner = "dathonohm";
         repo = "guix.sigs";
-        rev = "b2426f8a4cfb10a63f1c7d4000f30aafb111b0f5";
-        sha256 = "sha256-qvaqcF6+uoKWy3gsWWpU2wLqUmqHXNhZqapB7aG0jdo=";
+        rev = "18f6d418ef188b830b86cb18ced41dee89a03d7f";
+        sha256 = "sha256-LFeu7LNjoHhbzOUO3HyShirY5LKvsSgIS8Bq1R915ug=";
       };
 
       checksums = fetchurl {
         url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/SHA256SUMS";
-        hash = "sha256-ir/SAVVdWLhiXX54i7JR8O+8/Ybim2VjeEdkdHSMZPk=";
+        hash = "sha256-K6/Cu1mka71k3myuqIPYY3T9G8Kp+mbdPRa2Dz+ADE0=";
       };
 
       signatures = fetchurl {
         url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/SHA256SUMS.asc";
-        hash = "sha256-XaxDDcOdMLPEbZKzb1Fs8KDqOzy/tRMdaH1oecSgrNc=";
+        hash = "sha256-+E4x/W8WwygSeGvKhnHYIIO677NKKQx1nXLd4zQ9N2M=";
       };
 
       verifyBuilderKeys =
@@ -166,9 +166,9 @@ stdenv.mkDerivation (finalAttrs: {
     (lib.cmakeBool "BUILD_GUI" true)
   ];
 
-  NIX_LDFLAGS = lib.optionals (
-    stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isStatic
-  ) "-levent_core";
+  env = lib.optionalAttrs (stdenv.hostPlatform.isLinux && stdenv.hostPlatform.isStatic) {
+    NIX_LDFLAGS = "-levent_core";
+  };
 
   nativeCheckInputs = [ python3 ];
 
