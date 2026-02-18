@@ -26,7 +26,10 @@
         inherit (pkgs.darwin) autoSignDarwinBinariesHook;
       };
 
-      audit = pkgs.callPackage ./pkgs/audit { srcB = ./pkgs/bitcoin-knots-bip-110/default.nix; };
+      audit = pkgs.callPackage ./pkgs/audit {
+        inherit (self.packages."${system}") bitcoind-knots-bip-110;
+        nixSrcB = ./pkgs/bitcoin-knots-bip-110/default.nix;
+      };
 
       update-checker = pkgs.callPackage ./pkgs/update-checker {
         inherit (self.packages."${system}") bitcoind-knots-bip-110;

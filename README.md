@@ -11,26 +11,20 @@ This flake contains three Nix packages:
 
 - ~bitcoin-knots-bip-110 - This package provides a GUI~ Removed because it doesn't build.
 - bitcoind-knots-bip-110 - This package does NOT provide a GUI. 
-- audit - A BASH script to compare the difference between this package and the original bitcoin-knots Nix package. See below.
+- audit - Performs a number of comparisons between Bitcoin Knots and the BIP-110 client. See below.
 - update-checker - A BASH script which uses the GitHub API to *check* for updates; The script doesn't make any changes.
 
 The `bitcoin-knots-bip-110` package is a copy of the bitcoin-knots package from the [Nixpkgs](https://github.com/NixOS/nixpkgs) repository; Due to the package's complexity, it was easier to copy and modify than to use an override.
 
 ## Usage
 
-Firstly, *don't trust, verify*. Don't be lazy. Check my work *before* using this package. Namely, compare `pkgs/bitcoin-knots-bip-110/default.nix` to `pkgs/applications/blockchains/bitcoin-knots/default.nix` in Nixpkgs to audit my changes. To make it easier, I added a script you can use to run a diff:
+Firstly, *don't trust, verify*. Don't be lazy. Check my work *before* using this package. As a starting point, you can use the included `audit` package:
 
 ```
-nix run github:emmanuelrosa/bitcoin-knots-bip-110-nix#audit 
+nix build github:emmanuelrosa/bitcoin-knots-bip-110-nix#audit 
 ```
 
-Yes, of course you should audit the audit script, but it's simple and short. See `pkgs/audit/default.nix`.
-
-Other things to consider:
-
-- Is the Nixpkgs input the real Nixpkgs?
-- Is the input for the BIP-110 client the correct one?
-- Are the checksums and signatures coming from the correct place?
+The build output contains a number of diffs, and a README explaining each one.
 
 Once you're ready to use this package, add this flake to your NixOS flake-based configuration, and override your bitcoin-knots package:
 
