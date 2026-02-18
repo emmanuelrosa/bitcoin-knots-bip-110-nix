@@ -12,6 +12,7 @@ This flake contains three Nix packages:
 - ~bitcoin-knots-bip-110 - This package provides a GUI~ Removed because it doesn't build.
 - bitcoind-knots-bip-110 - This package does NOT provide a GUI. 
 - audit - A BASH script to compare the difference between this package and the original bitcoin-knots Nix package. See below.
+- update-checker - A BASH script which uses the GitHub API to *check* for updates; The script doesn't make any changes.
 
 The `bitcoin-knots-bip-110` package is a copy of the bitcoin-knots package from the [Nixpkgs](https://github.com/NixOS/nixpkgs) repository; Due to the package's complexity, it was easier to copy and modify than to use an override.
 
