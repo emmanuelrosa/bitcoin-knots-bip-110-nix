@@ -19,7 +19,7 @@
     );
   in {
     packages = forAllSystems (pkgs: system: {
-      default = self.packages."${system}".bitcoin-knots-bip-110;
+      default = self.packages."${system}".bitcoind-knots-bip-110;
 
       bitcoind-knots-bip-110 = pkgs.callPackage ./pkgs/bitcoin-knots-bip-110 {
         withGui = false;
