@@ -32,20 +32,19 @@
   # The list can be found at https://github.com/bitcoinknots/guix.sigs/tree/knots/builder-keys
   builderKeys ? [
     "1A3E761F19D2CC7785C5502EA291A2C45D0C504A" # luke-jr.gpg
-    "32FE1E61B1C711186CA378DEFD8981F1BC41ABB9" # oomahq
-    "95636F3538D9262765AB29BEE952E584CA8C0F45" # bitcoinmechanic
+    "DAED928C727D3E613EC46635F5073C4F4882FFFC" # leo-haf.gpg
     "2B97F03293744D70F6BBA82F2E3A66FF67F98B4F" # dathonohm
   ],
 }:
 
 stdenv.mkDerivation (finalAttrs: {
   pname = if withGui then "bitcoin-knots-bip-110" else "bitcoind-knots-bip-110";
-  version = "29.3.knots20260210+bip110-v0.3"; 
+  version = "29.3.knots20260210+bip110-v0.4.1"; 
 
   src = fetchurl {
     url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/bitcoin-${finalAttrs.version}.tar.gz";
     # hash retrieved from signed SHA256SUMS
-    hash = "sha256-Wu+owbzUxhKG5ma1PQihsngVLgqWTv8VdSGG/qzn3Xs=";
+    hash = "sha256-Hkz/hRnGytJs0wlcmHQGZ7/vHptO2SKtuB48N6c+EXc=";
   };
 
   nativeBuildInputs = [
@@ -90,18 +89,18 @@ stdenv.mkDerivation (finalAttrs: {
       publicKeys = fetchFromGitHub {
         owner = "dathonohm";
         repo = "guix.sigs";
-        rev = "18f6d418ef188b830b86cb18ced41dee89a03d7f";
-        sha256 = "sha256-LFeu7LNjoHhbzOUO3HyShirY5LKvsSgIS8Bq1R915ug=";
+        rev = "a943f35aab35b314b478358a4ea7f79b182fffd2";
+        sha256 = "sha256-3UYxHTRZ2LShAVjHlYV8+pXicMZb14akmB86nhz1XIY=";
       };
 
       checksums = fetchurl {
         url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/SHA256SUMS";
-        hash = "sha256-6gd/dmVTjhAyuryCtf3t2jxTZRLuukHnt4TAQM8dQ/E=";
+        hash = "sha256-dnfaHrFTJgdHDHL6AiM1Kxu7esyyDFLS/V8FU6YiO34=";
       };
 
       signatures = fetchurl {
         url = "https://github.com/dathonohm/bitcoin/releases/download/v${finalAttrs.version}/SHA256SUMS.asc";
-        hash = "sha256-dJLt0kbPMipBuaePcCs8prPakggJpmzFgOtqO84cbjI=";
+        hash = "sha256-Rv8qNr3eLCHzU/YQdcLILJnnw03cdO7tQpsvWty2hnw=";
       };
 
       verifyBuilderKeys =
