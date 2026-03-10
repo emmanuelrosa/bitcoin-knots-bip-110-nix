@@ -6,7 +6,7 @@
 , fetchFromGitHub
 , diffutils
 , gnutar
-, rev ? "a1527c52355063709233c891e58ffc7567b62368" 
+, rev ? "6d3b61b190a899042ce82a5355111976ba76d698" 
 , nixSrcB
 , bitcoind-knots-bip-110
 }: let
@@ -18,7 +18,7 @@
 
   nixSrcA = fetchurl {
     url = "https://github.com/nixos/nixpkgs/raw/${rev}/pkgs/applications/blockchains/bitcoin-knots/default.nix";
-    hash = "sha256-nzJHHm2n39ZJZ0PJu+F10Ddpx35mIcvQjCbKMXrkVmw=";
+    hash = "sha256-4srrBvnyujD1CARRcqETta2ZtX1o2DdAfuqUlFv6gEs=";
   };
 
   bitcoin-knots = fetchFromGitHub {
@@ -38,8 +38,8 @@
   bitcoin-knots-bip-110-pr = fetchFromGitHub {
     owner = "dathonohm";
     repo = "bitcoin";
-    rev = "1f323490ee1a4e4a340806bb12fe9fdaf0b7f37d";
-    sha256 = "sha256-AFui8jJ05i9za5AV1Ya99ONNeqPu/UQgZQPv/alOTAM=";
+    rev = "a8e9e0e44cf29d31ec784f4d82cf0359120b17fb";
+    sha256 = "sha256-vlRwXQu6b6xrI+NZtOi9h3VqVs2hF3IJMrh2L79PlwA=";
   };
 
   readme = writeTextFile {
