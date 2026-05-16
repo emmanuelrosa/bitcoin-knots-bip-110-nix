@@ -21,7 +21,7 @@
     packages = forAllSystems (pkgs: system: {
       default = self.packages."${system}".bitcoind-knots-bip-110;
 
-      bitcoind-knots-bip-110 = pkgs.callPackage ./pkgs/bitcoin-knots-bip-110 {
+      bitcoind-knots-bip-110 = pkgs.lib.warn "The bitcoin-knots-bip-110 Nix flake is deprecated because Bitcoin Knots now supports BIP-110! See https://github.com/NixOS/nixpkgs/pull/519753" pkgs.callPackage ./pkgs/bitcoin-knots-bip-110 {
         withGui = false;
         inherit (pkgs.darwin) autoSignDarwinBinariesHook;
       };

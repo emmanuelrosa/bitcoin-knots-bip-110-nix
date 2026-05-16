@@ -1,5 +1,7 @@
 # bitcoin-knots-bip-110-nix
 
+**NOTICE:** This Nix flake is deprecated because Bitcoin Knots now supports BIP-110! For information about Nixpkgs availability, see the PR https://github.com/NixOS/nixpkgs/pull/519753.
+
 This is a [NixOS](https://nixos.org/) flake which provides GUI and non-GUI packages for the Bitcoin Knots BIP-110 activation client. See https://github.com/dathonohm/bitcoin/releases
 
 - Contains a Nix package to build the Bitcoin Knots BIP-110 activation client, from its source code.
